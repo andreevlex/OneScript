@@ -111,7 +111,7 @@ pipeline {
                 unstash 'zipDist'
 
                 sh '''
-                mkdir install/build
+                mkdir -p install/build
                 unzip dist/*.zip -d install/build/
 
                 cd install
