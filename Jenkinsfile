@@ -97,6 +97,7 @@ pipeline {
                     bat "chcp $outputEnc > nul\r\n\"${tool 'MSBuild'}\" BuildAll.csproj /p:Configuration=Release /p:Platform=x86 /t:CreateZip;CreateInstall;CreateNuget"
                     archiveArtifacts artifacts: '**/dist/*.exe, **/dist/*.msi, **/dist/*.zip, **/dist/*.nupkg', fingerprint: true
                     stash includes: 'dist/*.exe, **/dist/*.msi, **/dist/*.zip', name: 'winDist'
+                    stash includes: '**/dist/*.zip', name: 'zipDist'
                 }
             }
         }
@@ -107,9 +108,12 @@ pipeline {
             steps {
 
                 checkout scm
-                unstash 'buildResults'
+                unstash 'zipDist'
 
                 sh '''
+                mkdir install/build
+                unzip dist/*.zip -d install/build/
+
                 cd install
                 chmod +x prepare-build.sh
                 chmod +x deb-build.sh
