@@ -97,7 +97,7 @@ pipeline {
                     bat "chcp $outputEnc > nul\r\n\"${tool 'MSBuild'}\" BuildAll.csproj /p:Configuration=Release /p:Platform=x86 /t:CreateZip;CreateInstall;CreateNuget"
                     archiveArtifacts artifacts: '**/dist/*.exe, **/dist/*.msi, **/dist/*.zip, **/dist/*.nupkg', fingerprint: true
                     stash includes: 'dist/*.exe, **/dist/*.msi, **/dist/*.zip', name: 'winDist'
-                    stash includes: '**/dist/*.zip', name: 'zipDist'
+                    stash includes: '**/dist/OneScript-*.zip', name: 'zipDist'
                 }
             }
         }
