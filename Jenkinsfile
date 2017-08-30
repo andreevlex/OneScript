@@ -112,7 +112,7 @@ pipeline {
 
                 sh '''
                 mkdir -p install/build
-                unzip dist/*.zip -d install/build/
+                unzip dist/OneScript-*.zip -d install/build/
 
                 cd install
                 chmod +x prepare-build.sh
