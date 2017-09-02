@@ -112,6 +112,7 @@ pipeline {
 
                 sh '''
                 locale -a
+                
                 rm -rf install/build
                 mkdir -p install/build
                 unzip -o -q dist/OneScript-*.zip -d install/build/
