@@ -111,10 +111,10 @@ pipeline {
                 unstash 'zipDist'
 
                 sh '''
+                locale -a | grep ru
                 rm -rf install/build
                 mkdir -p install/build
                 unzip -o -q dist/OneScript-*.zip -d install/build/
-                ls -lR install/build/
 
                 cd install
                 chmod +x prepare-build.sh
