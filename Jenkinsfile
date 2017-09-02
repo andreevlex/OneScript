@@ -114,7 +114,7 @@ pipeline {
                 rm -rf install/build
                 mkdir -p install/build
                 unzip -o -q -O cp1251 dist/OneScript-*.zip -d install/build/
-
+                
                 cd install
                 chmod +x prepare-build.sh
                 chmod +x deb-build.sh
