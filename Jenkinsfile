@@ -111,7 +111,7 @@ pipeline {
                 unstash 'zipDist'
 
                 sh '''
-                locale -a | grep ru
+                locale -a
                 rm -rf install/build
                 mkdir -p install/build
                 unzip -o -q dist/OneScript-*.zip -d install/build/
